@@ -359,10 +359,6 @@ model = GPT(GPTCofig(vocab_size=50304))
 
 # ----------------------------------------
 
-num_return_sequences = 5
-max_length = 50
-
-model.eval()
 model.to(device)
 
 # Can't torch.compile() without triton (on windows)
@@ -448,6 +444,8 @@ for step in range(max_steps):
 
 sys.exit(0)
 # ----------------------------------------
+num_return_sequences = 5
+max_length = 50
 
 # prefix tokens (prompt)
 
@@ -457,6 +455,7 @@ sys.exit(0)
 # x = tokens.to(device)
 
 # ----------------------------------------
+model.eval()
 
 # generate - x = (B, T)
 start_time = time.time()
